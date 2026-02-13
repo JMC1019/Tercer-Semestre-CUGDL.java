@@ -1,0 +1,14 @@
+# Ignorar carpetas de configuración de IntelliJ
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Ignorar carpetas de compilación (donde se generan los .class)
+out/
+target/
+build/
+cmake-build-debug/
+
+# Otros archivos del sistema
+.DS_Store
