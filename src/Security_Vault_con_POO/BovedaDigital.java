@@ -26,16 +26,15 @@ public class BovedaDigital {
             return "ACCESO DENEGADO: La bóveda está bloqueada. Contacte al administrador.";
         }
         if (this.llaveMaestra.equals(pinIngresado)) {
-            // Éxito: Reseteamos contadores y registramos
             this.intentosFallidos = 0;
-            registrarEvento("Acceso exitoso al contenido sensible.");
+            registrarEvento("Acceso exitoso a contenido sensible.");
             return this.contenidoSensible;
         } else {
             this.intentosFallidos++;
             registrarEvento("Intento fallido de acceso. Intento número: " + this.intentosFallidos);
             if (this.intentosFallidos >= 3) {
                 this.estaBloqueada = true;
-                registrarEvento("ALERTA DE SEGURIDAD: Bóveda bloqueada automáticamente.");
+                registrarEvento("ALERTA: Bóveda bloqueada automáticamente.");
             }
             return "PIN Incorrecto.";
         }
@@ -56,12 +55,12 @@ public class BovedaDigital {
             return false;
         }
         this.llaveMaestra = nuevoPin;
-        registrarEvento("AUDITORÍA: La llave maestra ha sido cambiada exitosamente.");
+        registrarEvento("La llave maestra ha sido cambiada exitosamente.");
         return true;
     }
 
     public void auditarBoveda() {
-        System.out.println("--- LOG DE AUDITORÍA ---");
+        System.out.println("--- AUDITORIA ---");
         for (String evento : this.registroActividad) {
             System.out.println(evento);
         }
@@ -69,14 +68,14 @@ public class BovedaDigital {
     }
 
     public boolean desbloquearBoveda(String codigoAdmin) {
-        final String CODIGO_MAESTRO_ADMIN = "ADMIN_SECURE_2024";
+        final String CODIGO_MAESTRO_ADMIN = "ADMIN_SECURE_2026";
         if (codigoAdmin.equals(CODIGO_MAESTRO_ADMIN)) {
             this.estaBloqueada = false;
             this.intentosFallidos = 0;
-            registrarEvento("ADMIN: Desbloqueo manual de emergencia realizado.");
+            registrarEvento("ADMIN: Desbloqueo manual realizado.");
             return true;
         } else {
-            registrarEvento("ALERTA CRÍTICA: Intento no autorizado de desbloqueo administrativo.");
+            registrarEvento("ALERTA: Intento no autorizado de desbloqueo.");
             return false;
         }
     }
