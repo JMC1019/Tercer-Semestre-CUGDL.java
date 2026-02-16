@@ -12,6 +12,5 @@ public class Main{
         Tasha.imaginar();
         Tasha.presentarse();
         Tasha.informacion();
-
     }
 }
