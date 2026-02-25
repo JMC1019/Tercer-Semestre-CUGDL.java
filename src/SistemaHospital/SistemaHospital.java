@@ -17,7 +17,7 @@ class Paciente extends Persona {
         this.peso = peso;
     }
 
-    public double calcularDosis(float dosisBase) {
+    public double calcularDosis(double dosisBase) {
         double dosisFinal = (this.peso * 0.8) + dosisBase;
         return dosisFinal;
     }
